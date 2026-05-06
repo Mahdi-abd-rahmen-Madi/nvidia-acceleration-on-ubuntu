@@ -3,12 +3,17 @@
 
 - name: Define browser list
   set_fact:
-    browser_list: "{{ browsers | default(supported_browsers) }}"
+    browser_list: "{{ browsers if browsers is string and browsers.startswith('[') else (browsers | default(supported_browsers)) }}"
+
+- name: Parse browser list if it's a string representation
+  set_fact:
+    browser_list: "{{ browser_list | from_yaml }}"
+  when: browser_list is string and browser_list.startswith('[')
 
 - name: Debug browser list
   debug:
     var: browser_list
-    verbosity: 1
+  tags: [browsers, debug]
 
 - name: Ensure user bin directory exists
   file:

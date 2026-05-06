@@ -13,8 +13,8 @@ desktop_dir: "{{ user_home }}/.local/share/applications"
 # Version requirements
 nv_codec_version: "12.1.14.0"
 min_nvidia_version: 470
-libva_version: "2.19.0"
-libva_utils_version: "2.19.0"
+libva_version: "2.22.0"
+libva_utils_version: "2.22.0"
 
 # Feature flags
 with_cuda: false

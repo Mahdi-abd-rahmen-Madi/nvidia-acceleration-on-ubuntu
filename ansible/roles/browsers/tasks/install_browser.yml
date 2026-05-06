@@ -25,8 +25,6 @@
         browser_display_name: "{{ browser_config.display_name }}"
         browser_executable: "{{ browser_config.executable }}"
         browser_type: "{{ browser_config.type }}"
-        vdpau_driver_path: "{{ vdpau_driver_path }}"
-        nvdec_driver_path: "{{ nvdec_driver_path }}"
 
     - name: "Create {{ browser_config.display_name }} desktop file"
       template:

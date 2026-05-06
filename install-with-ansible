@@ -223,6 +223,9 @@ if [[ ${#BROWSERS[@]} -gt 0 ]]; then
     done
     BROWSER_LIST="${BROWSER_LIST%,}]"
     EXTRA_VARS="${EXTRA_VARS} browsers=${BROWSER_LIST}"
+else
+    # When no browsers are specified, explicitly pass empty list to use default supported_browsers
+    EXTRA_VARS="${EXTRA_VARS} browsers=[]"
 fi
 
 # Add skip_browsers if requested

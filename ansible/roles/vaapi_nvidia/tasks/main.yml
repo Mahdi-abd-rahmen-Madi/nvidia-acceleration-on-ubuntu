@@ -60,7 +60,7 @@
       replace:
         path: "{{ builddir }}/nvidia-vaapi-driver/meson.build"
         regexp: '^meson_version\s*=.*$'
-        replace: 'meson_version = \'>= 0.53.0\''
+        replace: "meson_version = '>= 0.53.0'"
       when: meson_compat_fixes | default(false)
       register: meson_version_patch
       

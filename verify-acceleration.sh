@@ -56,7 +56,7 @@ if lsmod | grep -q "^nvidia "; then
     print_success "NVIDIA kernel module is loaded"
     
     if command -v nvidia-settings &> /dev/null; then
-        VERSION=$(nvidia-settings --version | grep version | awk '{print $4}')
+        VERSION=$(nvidia-settings --version | grep version | awk '{print $3}')
         print_success "NVIDIA driver version: $VERSION"
         
         # Check driver version meets minimum requirement

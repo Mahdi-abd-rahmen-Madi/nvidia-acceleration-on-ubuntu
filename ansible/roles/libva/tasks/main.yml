@@ -27,15 +27,15 @@
 
 - name: Check if libva tarball exists
   stat:
-    path: "{{ builddir }}/libva-{{ libva_version }}.tar.gz"
+    path: "{{ builddir }}/libva-{{ libva_version }}.tar.bz2"
   register: libva_tarball
   when: not libva_installed
   tags: [libva, vaapi]
 
 - name: Download libva
   get_url:
-    url: "https://github.com/intel/libva/releases/download/{{ libva_version }}/libva-{{ libva_version }}.tar.gz"
-    dest: "{{ builddir }}/libva-{{ libva_version }}.tar.gz"
+    url: "https://github.com/intel/libva/releases/download/{{ libva_version }}/libva-{{ libva_version }}.tar.bz2"
+    dest: "{{ builddir }}/libva-{{ libva_version }}.tar.bz2"
     mode: '0644'
     timeout: 60
     validate_certs: yes
@@ -48,7 +48,7 @@
 
 - name: Extract libva
   unarchive:
-    src: "{{ builddir }}/libva-{{ libva_version }}.tar.gz"
+    src: "{{ builddir }}/libva-{{ libva_version }}.tar.bz2"
     dest: "{{ builddir }}"
     remote_src: yes
     creates: "{{ builddir }}/libva-{{ libva_version }}/configure"
@@ -116,15 +116,15 @@
 
 - name: Check if libva-utils tarball exists
   stat:
-    path: "{{ builddir }}/libva-utils-{{ libva_utils_version }}.tar.gz"
+    path: "{{ builddir }}/libva-utils-{{ libva_utils_version }}.tar.bz2"
   register: libva_utils_tarball
   when: not libva_utils_installed
   tags: [libva, vaapi, utils]
 
 - name: Download libva-utils
   get_url:
-    url: "https://github.com/intel/libva-utils/releases/download/{{ libva_utils_version }}/libva-utils-{{ libva_utils_version }}.tar.gz"
-    dest: "{{ builddir }}/libva-utils-{{ libva_utils_version }}.tar.gz"
+    url: "https://github.com/intel/libva-utils/releases/download/{{ libva_utils_version }}/libva-utils-{{ libva_utils_version }}.tar.bz2"
+    dest: "{{ builddir }}/libva-utils-{{ libva_utils_version }}.tar.bz2"
     mode: '0644'
     timeout: 60
     validate_certs: yes
@@ -137,7 +137,7 @@
 
 - name: Extract libva-utils
   unarchive:
-    src: "{{ builddir }}/libva-utils-{{ libva_utils_version }}.tar.gz"
+    src: "{{ builddir }}/libva-utils-{{ libva_utils_version }}.tar.bz2"
     dest: "{{ builddir }}"
     remote_src: yes
     creates: "{{ builddir }}/libva-utils-{{ libva_utils_version }}/configure"
